@@ -26,6 +26,7 @@ class ProductController extends Controller
         $product->price = $request->price;
         $product->description = $request->description;
         $product->category = $request->category;
+        $product->image = $request->image;
 
         $product->save();
         return 'successfully created product';
@@ -50,6 +51,7 @@ class ProductController extends Controller
         $product->price = $request->price;
         $product->description = $request->description;
         $product->category = $request->category;
+        $product->image = $request->image;
 
         $product->save();
         return 'successfully updated product';
