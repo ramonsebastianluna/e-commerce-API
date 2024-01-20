@@ -48,7 +48,10 @@ class ProductController extends Controller
         $product->image = $request->image;
 
         $product->save();
-        return 'successfully created product';
+        
+        return response()->json([
+            'status' => "success",
+            'message' => 'successfully created product'], 201);
     }
 
     /**
@@ -90,7 +93,10 @@ class ProductController extends Controller
         $product->image = $request->image;
 
         $product->save();
-        return 'successfully updated product';
+        
+        return response()->json([
+            'status' => "success",
+            'message' => 'successfully updated product'], 201);
     }
 
     /**
@@ -99,6 +105,9 @@ class ProductController extends Controller
     public function destroy(string $id)
     {
         $product = Product::destroy($id);
-        return 'deleted product';
+        
+        return response()->json([
+            'status' => "success",
+            'message' => 'successfully deleted product'], 201);
     }
 }
