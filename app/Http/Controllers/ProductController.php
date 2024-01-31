@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Resources\ProductResource;
 use App\Http\Resources\ProductErrorResource;
+use App\Http\Resources\ProductSuccessResource;
 use Illuminate\Http\Request;
 use App\Models\Product;
 
@@ -51,9 +52,7 @@ class ProductController extends Controller
 
         $product->save();
         
-        return response()->json([
-            'status' => "success",
-            'message' => 'successfully created product'], 201);
+        return new ProductSuccessResource($product, $message = 'successfully created product');
     }
 
     /**
@@ -83,20 +82,19 @@ class ProductController extends Controller
 
         $product->save();
         
-        return response()->json([
-            'status' => "success",
-            'message' => 'successfully updated product'], 201);
+        return new ProductSuccessResource($product, $message = 'successfully updated product');
     }
 
     /**
      * Remove the specified resource from storage.
      */
     public function destroy(string $id)
-    {
-        $product = Product::destroy($id);
-        
-        return response()->json([
-            'status' => "success",
-            'message' => 'successfully deleted product'], 201);
+    {   
+        if (!$product = Product::find($id)) {
+            return new ProductErrorResource($product);
+        } else {
+            $product = Product::destroy($id);
+            return new ProductSuccessResource($product, $message = 'successfully deleted product');
+        }
     }
 }
