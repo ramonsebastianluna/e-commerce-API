@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\ProductResource;
 use Illuminate\Http\Request;
 use App\Models\Product;
 
@@ -60,24 +61,7 @@ class ProductController extends Controller
     public function show(string $id)
     {
         $product = Product::find($id);
-        
-        return response()->json([
-            'data' => [
-                'type' => 'product',
-                'id' => $product->id,
-                'attributes' => [
-                    'id' => $product->id,
-                    'title' => $product->title,
-                    'price' => $product->price,
-                    'description' => $product->description,
-                    'category' => $product->category,
-                    'image' => $product->image
-                ],
-                'links' => [
-                    'self' => null,
-                ],
-            ]
-        ], 200);
+        return new ProductResource($product);
     }
 
     /**
