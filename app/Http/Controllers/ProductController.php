@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Resources\ProductResource;
+use App\Http\Resources\ProductErrorResource;
 use Illuminate\Http\Request;
 use App\Models\Product;
 
@@ -61,7 +62,11 @@ class ProductController extends Controller
     public function show(string $id)
     {
         $product = Product::find($id);
-        return new ProductResource($product);
+        if (!$product) {
+            return new ProductErrorResource($product);
+        } else {
+            return new ProductResource($product);
+        }
     }
 
     /**
