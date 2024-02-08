@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Resources\ProductResource;
 use App\Http\Resources\ProductErrorResource;
 use App\Http\Resources\ProductSuccessResource;
+use App\Http\Resources\AllProductsResource;
 use Illuminate\Http\Request;
 use App\Models\Product;
 
@@ -18,21 +19,7 @@ class ProductController extends Controller
         $products = Product::all();
 
         $formattedProducts = $products->map(function ($product) {
-            return [
-                'type' => 'product',
-                'id' => $product->id,
-                'attributes' => [
-                    'id' => $product->id,
-                    'title' => $product->title,
-                    'price' => $product->price,
-                    'description' => $product->description,
-                    'category' => $product->category,
-                    'image' => $product->image,
-                ],
-                'links' => [
-                    'self' => null,
-                ],
-            ];
+            return new AllProductsResource($product);
         });
 
         return ['data' => $formattedProducts];
