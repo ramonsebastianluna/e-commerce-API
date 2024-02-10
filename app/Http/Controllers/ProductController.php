@@ -22,7 +22,7 @@ class ProductController extends Controller
             return new AllProductsResource($product);
         });
 
-        return ['data' => $formattedProducts];
+        return $formattedProducts;
     }
 
     /**
