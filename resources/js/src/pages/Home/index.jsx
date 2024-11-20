@@ -1,15 +1,13 @@
-import { Link } from '@inertiajs/react'
-import Header from '../partials/Header'
-import Footer from '../partials/Footer'
+import AppLayout from '../../layout/AppLayout'
 
 const Home = () => {
   return (
-    <>
-      <Header />
+    <main>
       <div>Esta es la home de react en laravel con inertia js</div>
-      <Footer />
-    </>
+    </main>
   )
 }
+
+Home.layout = page => <AppLayout children={page} title='Home'/>
 
 export default Home
