@@ -1,19 +1,16 @@
-import { Link } from '@inertiajs/react'
+import BurgerMenu from '../../../components/BurguerMenu'
 
 const Header = () => {
   return (
-    <header>
-        <div>
-            <div>
-                <h2>E-Commerce API</h2>
-            </div>
-            <nav>
-                <Link href='/'>Home</Link>
-                <Link href='/docs'>Docs</Link>
-                <a href='https://github.com' target='_blank'>GitHub</a>
-                <button>Buy me a coffee</button>
-            </nav>
+    <header className='container mx-auto p-4 font-montserrat'>
+      <div className='flex justify-between'>
+        <div className='content-center'>
+          <h2 className='text-2xl font-bold'>E-Commerce API</h2>
         </div>
+        <nav className='text-black content-center'>
+          <BurgerMenu/>
+        </nav>
+      </div>
     </header>
   )
 }
