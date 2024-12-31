@@ -33,11 +33,13 @@ const BurgerMenu = () => {
         </div>
       </div>
 
-      <style jsx>{`
+      <style>
+        {`
           #menu-toggle:checked + label + #mobile-menu {
           max-height: 300px;
           }
-      `}</style>
+        `}
+      </style>
     </div>
   )
 }
