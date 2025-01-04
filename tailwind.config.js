@@ -9,7 +9,10 @@ export default {
     extend: {
       fontFamily: {
         montserrat: ['Montserrat', 'serif'],
-      }
+      },
+      minHeight: {
+        '550': '550px'
+      },
     },
   },
   plugins: [],
