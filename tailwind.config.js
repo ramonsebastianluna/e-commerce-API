@@ -13,6 +13,9 @@ export default {
       minHeight: {
         '550': '550px'
       },
+      boxShadow: {
+        cardShadow: '0px 9px 15px -2px rgba(97, 97, 97, 0.43)',
+      },
     },
   },
   plugins: [],
